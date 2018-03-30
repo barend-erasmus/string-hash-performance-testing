@@ -39,4 +39,5 @@ Non-Cryptographic Winner: **DJBD2** (2.95 times faster than **MD5**)
 
 ## Randomness Testing
 
-![](https://github.com/barend-erasmus/string-hash-performance-testing/raw/master/randomness-images/DJBD2.svg)
+### DJBD2
+![](https://github.com/barend-erasmus/string-hash-performance-testing/raw/master/randomness-images/DJBD2.png)
