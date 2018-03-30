@@ -44,37 +44,37 @@ const hashFunctions = {
     SHA512,
 };
 
-// console.log('-- Performance Testing --');
+console.log('-- Performance Testing --');
 
-// const performanceLogFileName: string = `string-hash-performance-testing-${moment().format('YYYY-DD-MM-HH-mm-ss')}.csv`;
+const performanceLogFileName: string = `string-hash-performance-testing-${moment().format('YYYY-DD-MM-HH-mm-ss')}.csv`;
 
-// fs.appendFileSync(performanceLogFileName, `Range;Range(/10000);${Object.keys(hashFunctions).join(';')}\r\n`);
+fs.appendFileSync(performanceLogFileName, `Range;Range(/10000);${Object.keys(hashFunctions).join(';')}\r\n`);
 
-// for (let interval = 1; interval < numberOfIntervals + 1; interval++) {
-//     const range: number = Math.floor(numberOfStrs / numberOfIntervals * interval);
-//     console.log(`   -- Range ${range} --`);
+for (let interval = 1; interval < numberOfIntervals + 1; interval++) {
+    const range: number = Math.floor(numberOfStrs / numberOfIntervals * interval);
+    console.log(`   -- Range ${range} --`);
 
-//     const hashResults: HashResult[] = [];
+    const hashResults: HashResult[] = [];
 
-//     for (const hashFunctionKey of Object.keys(hashFunctions)) {
-//         const hashFunction: IHashFunction = new hashFunctions[hashFunctionKey]();
+    for (const hashFunctionKey of Object.keys(hashFunctions)) {
+        const hashFunction: IHashFunction = new hashFunctions[hashFunctionKey]();
 
-//         const intervalStrs: string[] = strs.slice(0, range);
+        const intervalStrs: string[] = strs.slice(0, range);
 
-//         const startTimestamp: Date = new Date();
+        const startTimestamp: Date = new Date();
 
-//         for (const str of intervalStrs) {
-//             const hash = hashFunction.hash(str);
-//         }
+        for (const str of intervalStrs) {
+            const hash = hashFunction.hash(str);
+        }
 
-//         const endTimestamp: Date = new Date();
+        const endTimestamp: Date = new Date();
 
-//         hashResults.push(new HashResult(hashFunctionKey, endTimestamp.getTime() - startTimestamp.getTime()));
-//     }
+        hashResults.push(new HashResult(hashFunctionKey, endTimestamp.getTime() - startTimestamp.getTime()));
+    }
 
-//     fs.appendFileSync(performanceLogFileName, `${range};${range / 10000};${hashResults.map((hashResult: HashResult) => hashResult.timeTakenInMiliseconds).join(';')}\r\n`);
+    fs.appendFileSync(performanceLogFileName, `${range};${range / 10000};${hashResults.map((hashResult: HashResult) => hashResult.timeTakenInMiliseconds).join(';')}\r\n`);
 
-// }
+}
 
 console.log('-- Randomness Testing --');
 
@@ -101,8 +101,10 @@ for (const hashFunctionKey of Object.keys(hashFunctions)) {
     const rectangleSize: number = 10;
 
     customSvgElement
-        .attr('height', rectangleSize * Math.sqrt(result.length))
-        .attr('width', rectangleSize * Math.sqrt(result.length))
+        // .attr('height', rectangleSize * Math.sqrt(result.length))
+        // .attr('width', rectangleSize * Math.sqrt(result.length))
+        .attr('height', 100)
+        .attr('width', 100)
         .style('background', 'white');
 
     let x: number = 0;
